@@ -11,12 +11,29 @@ pre { background: #f0f0f0; padding: 15px; border-radius: 8px; }
 <body>
 <h1>✨ Моя первая программа на JavaScript</h1>
 <p>Смотри результат в консоли (F12 → Console)</p>
+<div class="result"></div>
+
+<style>
+    .result {
+        max-width: 300px;
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        overflow-y: auto;
+        white-space: pre;
+        font-family: 'Courier New', monospace;
+        line-height: 1.4;
+        max-width: 100%;
+    }
+</style>
 
 <script>
 // ========== МОЯ ПЕРВАЯ ПРОГРАММА ==========
 
 // Приветствие
-console.log("%c�� Программа запущена!", "color: green; font-size: 16px");
+console.log("Программа запущена!", "color: green; font-size: 16px");
 
 // Запрашиваем данные
 let name = prompt("Привет! Как тебя зовут?");
@@ -44,19 +61,20 @@ let businessCard = `
 ║ Сейчас: ${currentYear} год
 ║ Тебе: ${age} лет
 ║
-
 ║ ⏳ До 100 лет: ${yearsTo100 > 0 ? yearsTo100 : "уже есть 100!"}
 ║
-║ ${age >= 18 ? "✅ Совершеннолетний" : "�� Несовершеннолетний"}
+║ ${age >= 18 ? "✅ Совершеннолетний" : "Несовершеннолетний"}
 ╚══════════════════════════════╝
 `;
+
+document.querySelector('.result').innerHTML += businessCard
 
 // Выводим визитку
 console.log(businessCard);
 
 // Дополнительная информация
-console.log(`�� Сегодня: ${new Date().toLocaleDateString()}`);
-console.log("%c�� Программа успешно завершена!", "color: blue;");
+console.log(`Сегодня: ${new Date().toLocaleDateString()}`);
+console.log("Программа успешно завершена!", "color: blue;");
 
 // Показываем сообщение пользователю
 alert(`Привет, ${name}! Тебе ${age} лет. Загляни в консоль (F12)!`);
