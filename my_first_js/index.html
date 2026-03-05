@@ -27,6 +27,13 @@ pre { background: #f0f0f0; padding: 15px; border-radius: 8px; }
         font-family: 'Courier New', monospace;
         line-height: 1.4;
         max-width: 100%;
+
+
+        transition-duration: 1s;
+    }
+
+    ._active {
+        transform: rotate(180deg);
     }
 </style>
 
@@ -69,6 +76,14 @@ let businessCard = `
 `;
 
 document.querySelector('.result').innerHTML += businessCard
+
+setInterval(() => {
+    if (document.querySelector('.result').classList.contains("_active") == true) {
+        document.querySelector('.result').classList.remove("_active")
+    } else {
+        document.querySelector('.result').classList.add("_active")
+    }
+}, 1500);
 
 // Выводим визитку
 console.log(businessCard);
