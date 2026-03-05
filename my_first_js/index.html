@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Моя первая программа</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+pre { background: #f0f0f0; padding: 15px; border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>✨ Моя первая программа на JavaScript</h1>
+<p>Смотри результат в консоли (F12 → Console)</p>
+
+<script>
+// ========== МОЯ ПЕРВАЯ ПРОГРАММА ==========
+
+// Приветствие
+console.log("%c�� Программа запущена!", "color: green; font-size: 16px");
+
+// Запрашиваем данные
+let name = prompt("Привет! Как тебя зовут?");
+let birthYear = prompt("В каком году ты родился?");
+
+// Превращаем текст в число
+birthYear = Number(birthYear);
+
+// Получаем текущий год
+let currentYear = new Date().getFullYear();
+
+// Вычисляем возраст
+let age = currentYear - birthYear;
+
+// Сколько до 100 лет
+let yearsTo100 = 100 - age;
+
+// Создаем визитку
+let businessCard = `
+╔══════════════════════════════╗
+║ �� ЦИФРОВАЯ ВИЗИТКА ║
+╠══════════════════════════════╣
+║ Имя: ${name}
+║ Год рождения: ${birthYear}
+║ Сейчас: ${currentYear} год
+║ Тебе: ${age} лет
+║
+
+║ ⏳ До 100 лет: ${yearsTo100 > 0 ? yearsTo100 : "уже есть 100!"}
+║
+║ ${age >= 18 ? "✅ Совершеннолетний" : "�� Несовершеннолетний"}
+╚══════════════════════════════╝
+`;
+
+// Выводим визитку
+console.log(businessCard);
+
+// Дополнительная информация
+console.log(`�� Сегодня: ${new Date().toLocaleDateString()}`);
+console.log("%c�� Программа успешно завершена!", "color: blue;");
+
+// Показываем сообщение пользователю
+alert(`Привет, ${name}! Тебе ${age} лет. Загляни в консоль (F12)!`);
+</script>
+</body>
+</html>
