@@ -28,12 +28,35 @@ pre { background: #f0f0f0; padding: 15px; border-radius: 8px; }
         line-height: 1.4;
         max-width: 100%;
 
-
+        transform: rotate(0deg);
         transition-duration: 1s;
     }
 
+@keyframes smoothRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+        background: gray;
+    }
+    25% {
+        transform: rotate(45deg) scale(1.05);
+        background: #95a5a6;
+    }
+    50% {
+        transform: rotate(90deg) scale(1.1);
+        background: #7f8c8d;
+    }
+    75% {
+        transform: rotate(135deg) scale(1.05);
+        background: #2ecc71;
+    }
+    100% {
+        transform: rotate(180deg) scale(1);
+        background: #27ae60;
+    }
+}
+
     ._active {
-        transform: rotate(180deg);
+        animation: rotateAnimation 0.5s ease-in-out;
     }
 </style>
 
