@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма авторизации с валидацией</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form class="login-form" id="loginForm" novalidate>
+            <h1>🔐 Вход в систему</h1>
+
+            <!-- Поле Email -->
+            <div class="form-group" id="emailGroup">
+                <label for="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@mail.ru"
+                    value=""
+                >
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <!-- Поле Пароль с глазиком -->
+            <div class="form-group" id="passwordGroup">
+                <label for="password">Пароль:</label>
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Минимум 6 символов"
+                    >
+                    <button type="button" class="toggle-password" id="togglePassword" title="Показать пароль">👁️</button>
+                </div>
+                <div class="error-message" id="passwordError"></div>
+                <!-- Индикатор надежности пароля -->
+                <div class="password-strength" id="passwordStrength">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                <div class="strength-text" id="strengthText"></div>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <button type="submit" id="submitBtn" disabled>Войти</button>
+
+            <!-- Ссылка на регистрацию -->
+            <p class="register-link">
+                Нет аккаунта? <a href="#" id="registerLink">Зарегистрироваться</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
