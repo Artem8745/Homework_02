@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик задач 2026 - Расширенная версия</title>
+    <style>
+        /* Все стили из задания - без изменений */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #c00b3b, #0bced5);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background 0.3s;
+        }
+        
+        .container {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .add-task {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .add-task input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .add-task input:focus {
+            outline: none;
+            border-color: #ea6666;
+        }
+        
+        .add-task button {
+            padding: 12px 25px;
+            background: #37ff00;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .add-task button:hover {
+            background: #00ffff;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .tasks-list {
+            list-style: none;
+            margin-bottom: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+        
+        .task-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .task-check {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 5px;
+            transition: color 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .delete-btn:hover {
+            color: #c0392b;
+        }
+        
+        .clear-btn {
+            width: 100%;
+            padding: 12px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .clear-btn:hover {
+            background: #c0392b;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #999;
+            padding: 30px;
+            font-style: italic;
+        }
+
+        .create-site-name {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 50px;
+            font-weight: 800;
+            color: #00fff2;
+
+            @media(max-width: 1120px) {
+                display: flex;
+                column-gap: 20px;
+                font-size: 30px;
+            }
+        }
+
+        .create-site-name p {
+            -webkit-text-stroke: 3px #333;
+
+            @media(max-width: 1120px) {
+                -webkit-text-stroke: 2px #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Планировщик задач 2026</h1>
+        <div class="subtitle">Управляй своим временем эффективно</div>
+        
+        <!-- Блок добавления задачи -->
+        <div class="add-task">
+            <input type="text" id="taskInput" placeholder="Введите новую задачу...">
+            <button id="addBtn">Добавить</button>
+        </div>
+        
+        <!-- Статистика -->
+        <div class="stats">
+            <span>Всего: <span id="totalTasks">0</span></span>
+            <span>Выполнено: <span id="completedTasks">0</span></span>
+            <span>Осталось: <span id="pendingTasks">0</span></span>
+        </div>
+        
+        <!-- Список задач -->
+        <ul class="tasks-list" id="tasksList">
+            <li class="empty-message">✨ Добавьте свою первую задачу</li>
+        </ul>
+        
+        <!-- Кнопка очистки -->
+        <button class="clear-btn" id="clearBtn">Очистить всё</button>
+    </div>
+
+    <div class="create-site-name">
+        <p>Лаптев</p>
+        <p>Шагавиев</p>
+        <p>Кабиров</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
