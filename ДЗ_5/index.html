@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивные эксперименты</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Интерактивные эксперименты</h1>
+    
+    <div class="controls">
+        <button onclick="changeBackground()">Изменить фон</button>
+        <button onclick="resizeImages()">Изменить размер картинок</button>
+        <button onclick="changeTitle()">Изменить заголовок</button>
+        <button onclick="startLiveList()">Запустить живой список</button>
+        <button onclick="stopLiveList()">Остановить список</button>
+    </div>
+
+    <div class="card">Карточка 1: Пример контента</div>
+    <div class="card">Карточка 2: Еще пример</div>
+    <div class="card">Карточка 3: Третий элемент</div>
+    
+    <img src="https://via.placeholder.com/300" alt="Пример 1">
+    <img src="https://via.placeholder.com/300" alt="Пример 2">
+    
+    <div id="liveListContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
